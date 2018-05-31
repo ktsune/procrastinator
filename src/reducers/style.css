@@ -6,7 +6,7 @@ body {
 }
 
 .news-feed {
-  /*border: 10px inset #b39dd7c7;*/
+  border: 10px inset #b39dd7c7;
   /*background: clear;*/
   /*font-size: 25px;*/
   padding: 25px 10px;
@@ -31,7 +31,7 @@ body {
 }
 
 .reddit-subline .reddit-title {
-  /*border: 10px inset #80000063;*/
+  border: 10px inset #80000063;
   background: clear;
   font-color: black;
   padding: 25px 10px;
