@@ -1,13 +1,22 @@
 import axios from 'axios';
-
 const ROOT_URL = `https://api.spotify.com/`;
 
 export const FETCH_SPOTFEED = 'FETCH_SPOTFEED';
 
-export function fetchSpotFeed() {
-  const token = "BQDEMLurUFNVjgVlilzNTwrIpsMs83qKYuq6TmkQB1eR2P9g9OGq6PEAhVbsVBqWwGoukLDA_fQm_yc63Lw";
-  const authHeader = {Authorization: `Bearer ${token}`};
-  const request = axios.get("https://api.spotify.com/v1/albums/6wjryxtrKxzTZID9kyZUV5", {"headers": authHeader});
+function retrieveToken() {
+  return axios.get("http://localhost:3001/spotify")
+          .then((response) => {
+            // console.log("retrieveToken", response);
+            return response.data.access_token;
+          });
+}
+
+export function fetchSpotFeed(token) {
+  const request = retrieveToken().then((token) => {
+    const authHeader = {Authorization: `Bearer ${token}`};
+    return axios.get("https://api.spotify.com/v1/albums/6wjryxtrKxzTZID9kyZUV5", {"headers": authHeader});
+  });
+
   return {
     type: FETCH_SPOTFEED,
     payload: request.then((album) => {
@@ -17,7 +26,7 @@ export function fetchSpotFeed() {
 }
 
 //SPOTIFY
-// curl -X POST \
+// curl -X GET https://accounts.spotify.com/ \
 // -u 6dc602b031594e9bac9d71934c8a10f1:69e8d2db92594f149170a8fce0adffa3 \
 // -d grant_type=authorization_code -d code=AQBOHQ-lv4InzjCUO8EasIJOGoioCDXD2A1HQoWlQvA9YkTwpjgfaGeUhKvyHvHE1233xaecRa2PZkxnDmggEAkz-OfR3U_8uN0i_2i9qJkM-o0sDWgItt8V6qSsEP3sIpJEtaEGFW-uh6DElREH1nusIaODTGO-P1h3azhr7bEoTW7VrT8RyzkgkVfyZQSzRxFSTMoFk6a7LlYMtEw66XXnpjiG99hMZb3snmIr9O-aAXQdZw3iKMFINXor2MQm1DhTpCsRf-3R9YYulpblzo33LFYNZ1ETnd0zyYoN6iOTa-SLV8d6qNVrJRxnrIoPHIAdgrN47PGexh0-07wrJ6cLXGvmzvkwWF8X03Nb4WF3KXocNcxozaEMAfrUc3_gL_Ymq_HvOdRQgTl1AaFG6WPCFHunE2KmA8kISAal9-ke6qJlCxDaDPmNMro7SntB0xSo6TQ6b77xYpPz03cBsUacTPpMK2UlseM9iKX3XZgAZkQj1WqX0Slf-EZhv2b4XLkqBohcfAblyRa8ZkQAZi7FKEy6crtkHAKPv1D3l_ueqdNtpoB_ADxgS9n2pOwctL5b-RlfZnUx7NnSSwCyQ0TUA0a6wlKhbLXaDnDKSVfRmq1npD9BVKz2IRuG1alLiXWGFuU-WtdjiZN3gQAePPv9qUmMV49Ucyjoib2c322aHJfvkSeFFYm- \
 // -d redirect_uri=http://sarahleewebconsulting.com https://accounts.spotify.com/api/token

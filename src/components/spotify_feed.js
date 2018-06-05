@@ -7,18 +7,19 @@ class SpotFeed extends Component {
   }
 
   titleToLink() {
-   //  const titleToLink = this.props.feed.album.data.tracks.items.reduce(function(memo, item) {
-   //  memo[item.name] = item.external_urls.spotify;
-   //   return memo;
-   // }, {});
+    const titleToLink = this.props.feed.album.data.tracks.items.reduce(function(memo, item) {
+    memo[item.name] = item.external_urls.spotify;
+     return memo;
+   }, {});
   }
-  createTrackItem = (track) => {
+
+  createTrackItem = (tracks) => {
     return (
-      <li riot-tag="spotify" className="spot-item">
-        <a className="link" href={track.uri}>
-          {track.name}
+      <ul riot-tag="spotify" className="spot-item">
+        <a className="link" href={tracks.uri}>
+          {tracks.name}
         </a>
-      </li>)
+      </ul>)
   }
 
   createAlbum = (albums) => {
@@ -27,16 +28,27 @@ class SpotFeed extends Component {
         <ul className="spot-list">
         {albums.tracks.items.map(this.createTrackItem)}
         </ul>
-      </div>)
+      </div>
+    )
 }
 
-  render() {
-    return (
-      <div>
-        {this.props.feed.map(this.createAlbum)}
-      </div>)
+render() {
+  return (
+    <div>
+      {this.props.feed.map(this.createAlbum)}
+    </div>)
   }
 }
+
+//   render() {
+//     // console.log("spot feed", this.props.feed)
+//     return (
+//       <div>
+//         {this.createTrackItem(this.props.items)}
+//       </div>
+//     )
+//   }
+// }
 
 export default SpotFeed;
 

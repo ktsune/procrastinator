@@ -1,45 +1,48 @@
-// import axios from 'axios';
-// // import redditActions from '../reddit_actions';
-// export const FETCH_HOT = 'FETCH_HOT';
-//
-// // const snoowrap = require('snoowrap');
-// // const r = new snoowrap({
-// //   clientId: 'pknF5jSJpBG8kw',
-// //   clientSecret: '9rbBZz74SrV7iXUg4cFTX0gWvwA',
-// //   refreshToken: '33797272575-a4G2DF8XfLd32ewO5pydwb7jknk'
-// // });
-//
-// export function fetchHot() {
-//
-//   const snoowrap = require('snoowrap');
-//   const r = new snoowrap({
-//     clientId: 'pknF5jSJpBG8kw',
-//     clientSecret: '9rbBZz74SrV7iXUg4cFTX0gWvwA',
-//     refreshToken: '33797272575-_p05nqOzyJSlzBu1-Ga2RJiFLso'
-//   })
-//   // const links = {
-//   //   r.getSubmission('4j8p6d').expandReplies({limit: Infinity, depth: Infinity}).then(console.log)
-//   //   r.getHot().then((articles) => {
-//   //     console.log(articles);
-//   // }
-//
-//   return {
-//     type: FETCH_HOT,
-//     payload: r.getHot()
-//       .then((articles) => {
-//       return r.getSubmission().expandReplies({limit: Infinity, depth: Infinity}).then((articles) => {console.log(articles)}
-//       .then((articles) => {
-//       console.log(articles)}
-//       }
-//     })
-//
-//     return {
-//       type: FETCH_HOT,
-//       payload: r.getSubmission().expandReplies({limit: Infinity, depth: Infinity}).then((articles) => {console.log(articles)}
-//       }
-//         return articles;
-//       })
-//   }
+import axios from 'axios';
+// import redditActions from '../reddit_actions';
+export const FETCH_HOT = 'FETCH_HOT';
+
+// const snoowrap = require('snoowrap');
+// const r = new snoowrap({
+//   clientId: 'pknF5jSJpBG8kw',
+//   clientSecret: '9rbBZz74SrV7iXUg4cFTX0gWvwA',
+//   refreshToken: '33797272575-a4G2DF8XfLd32ewO5pydwb7jknk'
+// });
+
+export function fetchHot() {
+  const snoowrap = require('snoowrap');
+  const r = new snoowrap({
+    clientId: 'pknF5jSJpBG8kw',
+    clientSecret: '9rbBZz74SrV7iXUg4cFTX0gWvwA',
+    refreshToken: '33797272575-_p05nqOzyJSlzBu1-Ga2RJiFLso'
+  })
+  // const links = {
+  //   r.getSubmission('4j8p6d').expandReplies({limit: Infinity, depth: Infinity}).then(console.log)
+  //   r.getHot().then((articles) => {
+  //     console.log(articles);
+  // }
+  const replyOptions = {limit: 2, depth: 2};
+  return {
+    type: FETCH_HOT,
+    payload: r.getHot(["aww"])
+      // .then((articles) => {
+      //   return r.getSubreddit('AskReddit').created_utc.then(console.log)
+        // return r.getSubmission("8nvu8a").expandReplies(replyOptions)
+    // }
+  // )
+  .then((articles) => {
+      console.log('in reddit action', articles);
+      return articles;
+    })
+  }
+
+    // return {
+    //   type: FETCH_HOT,
+    //   payload: r.getSubmission().expandReplies(replyOptions).then((articles) => {console.log(articles)}
+    //   }
+    //     return articles;
+    //   })
+  }
 // }
 //
 // // const title-comments =

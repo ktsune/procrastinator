@@ -15,12 +15,17 @@ body {
   text-overflow: ellipsis;
 }
 
-.reddit-item {
+.spot-item a {
+  color: #686e73;
+  /*list-style-type: none;*/
+}
+
+.reddit-item .spot-list  .spot-item{
   list-style-type: none;
   /*box-shadow: 10px 5px 12px 4px #4e4a4a;*/
 }
 
-.reddit-title {
+.reddit-title .spot-list {
   font-family: sans-serif;
   font-size: 14px;
 }

@@ -1,12 +1,10 @@
-import { FETCH_SPOTFEED } from '../actions/spotify_actions';
-// import redditActions from '../reddit_actions';
-
+import { FETCH_SPOTFEED } from '../actions/index';
 
 export default function(state = [], action) {
   switch (action.type) {
     case FETCH_SPOTFEED:
-    console.log("PAYLOAD", action.payload)
-    return [].concat(action.payload).concat(state);
+      console.log("PAYLOAD", action.payload)
+      return [].concat(action.payload).concat(state);
   }
   return state;
 }
