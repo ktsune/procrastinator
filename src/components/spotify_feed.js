@@ -6,12 +6,12 @@ class SpotFeed extends Component {
     super(props);
   }
 
-  titleToLink() {
-    const titleToLink = this.props.feed.album.data.tracks.items.reduce(function(memo, item) {
-    memo[item.name] = item.external_urls.spotify;
-     return memo;
-   }, {});
-  }
+  // titleToLink() {
+  //   const titleToLink = this.props.feed.album.data.tracks.items.reduce(function(memo, item) {
+  //   memo[item.name] = item.external_urls.spotify;
+  //    return memo;
+  //  }, {});
+  // }
 
   createTrackItem = (tracks) => {
     return (
@@ -22,20 +22,24 @@ class SpotFeed extends Component {
       </ul>)
   }
 
-  createAlbum = (albums) => {
-    return (
-      <div>
-        <ul className="spot-list">
-        {albums.tracks.items.map(this.createTrackItem)}
-        </ul>
-      </div>
-    )
-}
+//   createAlbum = (albums) => {
+//     return (
+//       <div>
+//         <ul className="spot-list">
+//         {albums.tracks.items.map(this.createTrackItem)}
+//         </ul>
+//       </div>
+//     )
+// }
 
 render() {
+  // const track = this.props.feed
+  // if (!track) {
+  //   return <div></div>;
+  // }
   return (
     <div>
-      {this.props.feed.map(this.createAlbum)}
+      {this.props.feed.map(this.createTrackItem)}
     </div>)
   }
 }

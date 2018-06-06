@@ -21,20 +21,33 @@ class NewsFeed extends Component {
     // this.props.fetchMedFeed();
   }
 
-  render() {
+  renderNewsFeed() {
     let range = (end) => Array.from(Array(end).keys());
     return (
       <div>
         {range(10).map((index) => {
-          console.log(this.props.redditFeed)
+          // console.log(this.props.redditFeed)
           return <div>
-            <SpotFeed feed={this.props.spotFeed} />
+            <SpotFeed feed={this.props.spotFeed[0].tracks.items[index]} />
             <RedditFeed item={this.props.redditFeed[index]} />
           </div>
         })}
         <div className='news-feed'></div>
-        <section className='detail' />
+        <section className='detail'/>
       </div>
+    )
+  }
+
+  renderLoading() {
+    return <div> Your data is still loading! </div>
+  }
+
+  render() {
+    return (
+    this.renderNewsFeed();
+    while (!this.props.spotFeed) {
+      return this.renderLoading();
+      }
     )
   }
 }
