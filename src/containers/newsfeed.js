@@ -43,12 +43,10 @@ class NewsFeed extends Component {
   }
 
   render() {
-    return (
-    this.renderNewsFeed();
+    return this.renderNewsFeed();
     while (!this.props.spotFeed) {
-      return this.renderLoading();
+      return this.renderLoading()
       }
-    )
   }
 }
 
