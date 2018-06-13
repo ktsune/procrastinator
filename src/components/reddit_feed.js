@@ -33,5 +33,3 @@ class RedditFeed extends Component {
 }
 
 export default RedditFeed;
-
-// GET https://hacker-news.firebaseio.com/v0/items/
