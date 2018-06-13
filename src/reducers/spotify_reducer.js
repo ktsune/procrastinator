@@ -4,7 +4,7 @@ export default function(state = [], action) {
   switch (action.type) {
     case FETCH_SPOTFEED:
       console.log("PAYLOAD", action.payload)
-      return [].concat(action.payload).concat(state);
+      return [].concat(action.payload.tracks.items).concat(state);
   }
   return state;
 }

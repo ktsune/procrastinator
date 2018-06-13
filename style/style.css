@@ -1,52 +1,47 @@
-body {
-  /*background-color: black;*/
-  /*background-image: url("https://images.pexels.com/photos/267684/pexels-photo-267684.jpeg?cs=srgb&dl=adult-book-boring-267684.jpg&fm=jpg");*/
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.news-feed {
-  /*border: 10px inset #b39dd7c7;*/
-  /*background: clear;*/
-  /*font-size: 25px;*/
-  padding: 25px 10px;
-  /*background-color: #0000004d;*/
-  color: black;
-  text-overflow: ellipsis;
+.container div {
+  background-color: grey;
 }
 
 .spot-item a {
-  color: #686e73;
-  /*list-style-type: none;*/
+ list-style-type: none;
+ color: white;
 }
 
-.reddit-item .spot-list  .spot-item{
+ .reddit-list ul {
   list-style-type: none;
-  /*box-shadow: 10px 5px 12px 4px #4e4a4a;*/
 }
 
-.reddit-title .spot-list {
+.reddit-title {
   font-family: sans-serif;
   font-size: 14px;
+  color: black;
 }
 
-.reddit-subline {
-  font-family: cursive;
+.reddit-item .reddit-subline {
+  color: darkgrey;
   font-size: 12px;
 }
 
-.reddit-subline .reddit-title {
-  /*border: 10px inset #80000063;*/
-  background: clear;
-  font-color: black;
-  padding: 25px 10px;
-  background-color: #0000004d;
+.spotify-subline {
+  color: darkgrey;
+  font-size: 12px;
 }
 
-.red-feed {
-  box-sizing: border-box;
+.container .reddit-item  a {
+  color: black;
+  text-decoration: none;
 }
 
-.reddit-item a {
-  color: #686e73;
+.container .spot-item a {
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.container .reddit-list:hover {
+  background-color: silver;
+}
+
+.container .spot-item:hover {
+  background-color: silver;
 }
