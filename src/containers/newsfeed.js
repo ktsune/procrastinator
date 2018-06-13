@@ -15,10 +15,7 @@ class NewsFeed extends Component {
     super(props);
 
     this.props.fetchHot();
-    // this.props.generateAccessToken();
-    // this.props.fetchHackFeed();
     this.props.fetchSpotFeed();
-    // this.props.fetchMedFeed();
   }
 
   renderNewsFeed() {
@@ -28,7 +25,7 @@ class NewsFeed extends Component {
         {range(10).map((index) => {
           // console.log(this.props.redditFeed)
           return <div>
-            <SpotFeed feed={this.props.spotFeed[0].tracks.items[index]} />
+            <SpotFeed feed={this.props.spotFeed[index]} />
             <RedditFeed item={this.props.redditFeed[index]} />
           </div>
         })}
@@ -43,10 +40,11 @@ class NewsFeed extends Component {
   }
 
   render() {
-    return this.renderNewsFeed();
-    while (!this.props.spotFeed) {
-      return this.renderLoading()
-      }
+    if (this.props.spotFeed.length > 0 && this.props.redditFeed.length > 0) {
+      return this.renderNewsFeed();
+    } else {
+      return this.renderLoading();
+    }
   }
 }
 

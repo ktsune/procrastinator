@@ -14,7 +14,7 @@ class RedditFeed extends Component {
     }
 
     return (
-      <div>
+      <div className="reddit-list">
         <ul className="reddit-list">
           <li riot-tag="reddit" className="reddit-item">
             <a className="link" href={article.url}>

@@ -17,20 +17,25 @@ class SpotFeed extends Component {
     return (
       <ul riot-tag="spotify" className="spot-item">
         <a className="link" href={tracks.uri}>
-          {tracks.name}
+          Title: {tracks.name}
+          <br />
+          <span className='spotify-subline'>
+           Spotify &nbsp;
+           Album: Yesterday's Gone
+         </span>
         </a>
       </ul>)
   }
 
-//   createAlbum = (albums) => {
-//     return (
-//       <div>
-//         <ul className="spot-list">
-//         {albums.tracks.items.map(this.createTrackItem)}
-//         </ul>
-//       </div>
-//     )
-// }
+  createAlbum = (albums) => {
+    return (
+      <div>
+        <ul className="spot-list">
+        {albums.tracks.items.map(this.createTrackItem)}
+        </ul>
+      </div>
+    )
+}
 
 render() {
   // const track = this.props.feed
@@ -39,7 +44,7 @@ render() {
   // }
   return (
     <div>
-      {this.props.feed.map(this.createTrackItem)}
+      {this.createTrackItem(this.props.feed)}
     </div>)
   }
 }
